@@ -84,4 +84,19 @@ public class LinkedList {
         ans = reverse(ans.next);
         return ans;
     }
+
+    public static ListNode removeDuplicates(ListNode head) {
+        ListNode nhead = new ListNode(-1);
+        ListNode temp = nhead, itr = head;
+
+        while(itr != null) {
+            if(itr.val != temp.val) {
+                temp.next = itr;
+                temp = itr;
+            }
+            itr = itr.next;
+        }
+        temp.next = null;
+        return nhead.next;
+    }
 }
