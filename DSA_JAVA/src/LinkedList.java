@@ -99,4 +99,23 @@ public class LinkedList {
         temp.next = null;
         return nhead.next;
     }
+    
+    public static ListNode findCycleNode(ListNode head) {
+        if (head == null || head.next == null) {
+            return null;
+        }
+        ListNode ptr1 = head, ptr2 = head;
+        while (ptr2 != null && ptr2.next != null) {
+            ptr = ptr.next;
+            ptr2 = ptr2.next.next;
+            if (ptr == ptr2) {
+                while (ptr2 != head) {
+                    head = head.next;
+                    ptr2 = ptr2.next;
+                }
+                return head;
+            }
+        }
+        return null;
+    }
 }
