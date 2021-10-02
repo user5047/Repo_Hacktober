@@ -104,14 +104,14 @@ public class LinkedList {
         if (head == null || head.next == null) {
             return null;
         }
-        ListNode ptr1 = head, ptr2 = head;
-        while (ptr2 != null && ptr2.next != null) {
-            ptr = ptr.next;
-            ptr2 = ptr2.next.next;
-            if (ptr == ptr2) {
-                while (ptr2 != head) {
+        ListNode slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                while (fast != head) {
                     head = head.next;
-                    ptr2 = ptr2.next;
+                    fast = fast.next;
                 }
                 return head;
             }
