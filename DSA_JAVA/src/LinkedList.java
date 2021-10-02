@@ -50,4 +50,38 @@ public class LinkedList {
         }
         return prev;
     }
+
+    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        if(l1 == null || l2 == null) {
+            return l1 == null ? l2 : l1;
+        }
+        l1 = reverse(l1);
+        l2 = reverse(l2);
+
+        ListNode i = l1;
+        ListNode j = l2;
+
+        ListNode ans = new ListNode(-1);
+        ListNode temp = ans;
+        int carry = 0;
+
+        while(i != null || j != null || carry == 1) {
+            int ival = i == null ? 0 : i.val;
+            i = i == null ? null : i.next;
+
+            int jval = j == null ? 0 : j.val;
+            j = j == null ? null : j.next;
+
+            int sum = ival + jval + carry;
+            int val = sum % 10;
+            carry = sum / 10;
+
+            ListNode nn = new ListNode(val);
+            temp.next = nn;
+            temp = nn;
+        }
+
+        ans = reverse(ans.next);
+        return ans;
+    }
 }
