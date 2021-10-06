@@ -8,6 +8,7 @@ public class GetStairPath {
         int n = Integer.parseInt(br.readLine());
         ArrayList<String> paths = getStairPaths(n);
         System.out.println(paths);
+
     }
 
     public static ArrayList<String> getStairPaths(int n) {
