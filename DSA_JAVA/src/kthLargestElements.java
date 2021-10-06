@@ -17,6 +17,7 @@ public class kthLargestElements {
         PriorityQueue<Integer> pq = new PriorityQueue<>();
         for(int i = 0; i < arr.length; i++){
             if(i < k){
+
                 pq.add(arr[i]);
             } else {
                 if(arr[i] > pq.peek()){
