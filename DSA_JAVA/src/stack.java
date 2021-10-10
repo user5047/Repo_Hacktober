@@ -5,7 +5,7 @@ public class stack
 	{
 		Scanner s=new Scanner(System.in);
 		String str=s.nextLine();
-		BinarySearch sol=new BinarySearch();
+		Solution sol=new Solution();
 		if(sol.ispar(str)==true)
 		{
 			System.out.println("Balanced");
