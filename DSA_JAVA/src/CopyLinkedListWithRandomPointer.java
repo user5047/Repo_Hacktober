@@ -30,36 +30,36 @@ public class CopyLinkedListWithRandomPointer
 
     public void cloneList(Node root)
     {
-        Node curr=root,temp;
-        while(curr!=null)
-        {
-            temp=curr.next;
-            //insert
-            curr.next=new Node(curr.value);
-            curr.next.next=temp;
-            curr=temp; // skip the next, jumping to next to next
-        }
-        curr=root;
-        while(curr!=null) //adjusting random pointers
-        {
-            if(curr.next!=null)
-                curr.next.random=(curr.random!=null)?curr.random.next:curr.random;
+        if(root!=null) {
+            Node curr = root, temp;
+            while (curr != null) {
+                temp = curr.next;
+                //insert
+                curr.next = new Node(curr.value);
+                curr.next.next = temp;
+                curr = temp; // skip the next, jumping to next to next
+            }
+            curr = root;
+            while (curr != null) //adjusting random pointers
+            {
+                if (curr.next != null)
+                    curr.next.random = (curr.random != null) ? curr.random.next : curr.random;
 
-            curr=(curr.next!=null)?curr.next.next:curr.next;  //moving to the original one
-        }
-        Node original=root,copy=root.next;
-        temp=copy;
-        while(original!=null && copy!=null)
-        {
-            original.next=original.next!=null ? original.next.next:original.next;
-            copy.next=copy.next!=null ? copy.next.next:copy.next;
-            original=original.next;
-            copy=copy.next;
-        }
+                curr = (curr.next != null) ? curr.next.next : curr.next;  //moving to the original one
+            }
+            Node original = root, copy = root.next;
+            temp = copy;
+            while (original != null && copy != null) {
+                original.next = original.next != null ? original.next.next : original.next;
+                copy.next = copy.next != null ? copy.next.next : copy.next;
+                original = original.next;
+                copy = copy.next;
+            }
         /*
         printing the cloned list
          */
-        traverse(temp);
+            traverse(temp);
+        }
     }
 
     //main function
